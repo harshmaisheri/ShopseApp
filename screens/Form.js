@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { LinearGradient } from "expo-linear-gradient";
 import { Icon } from "react-native-elements";
 
@@ -11,34 +11,34 @@ import Button from "../components/Button";
 export default class Form extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      headerTitle: (
+      headerTitle: () => (
         <Image
           resizeMode="contain"
           source={require("../assets/images/Logo.png")}
           style={{ width: 200, height: 60, marginRight: 16 }}
         />
       ),
-      headerLeft: (
+      headerLeft: () => (
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Text
             style={{
-              fontSize: 30,
+              fontSize: 40,
               fontWeight: "700",
-              paddingLeft: "15px",
+              marginLeft: 16,
               color: "#430098",
-              marginTop: "-8px",
+              marginTop: -8,
             }}
           >
             &times;
           </Text>
         </TouchableOpacity>
       ),
-      headerRight: (
+      headerRight: () => (
         <Image
           resizeMode="contain"
           source={require("../assets/images/telephone.png")}
-          style={{ width: "25px", height: "25px", marginRight: "16px" }}
-        ></Image>
+          style={{ width: 25, height: 25, marginRight: 16 }}
+        />
       ),
     };
   };
@@ -56,7 +56,11 @@ export default class Form extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <KeyboardAwareScrollView
+        keyboardShouldPersistTaps={"always"}
+        style={{ flex: 1 }}
+        showsVerticalScrollIndicator={false}
+      >
         {/* Header */}
         <TopBanner />
 
@@ -110,7 +114,6 @@ export default class Form extends React.Component {
             />
           </LinearGradient>
         </View>
-
         <View style={styles.tncContainer}>
           <View
             style={styles.tncCol}
@@ -122,7 +125,7 @@ export default class Form extends React.Component {
             }
           >
             <Icon
-              style={{ marginRight: "1rem" }}
+              style={{ marginRight: 16 }}
               name="check-square-o"
               type="font-awesome"
               color={this.state.selectedTnc ? "#3CD52E" : "#F0F0F0"}
@@ -139,7 +142,7 @@ export default class Form extends React.Component {
             }
           >
             <Icon
-              style={{ marginRight: "1rem" }}
+              style={{ marginRight: 16 }}
               name="check-square-o"
               type="font-awesome"
               color={this.state.selectedWA ? "#3CD52E" : "#F0F0F0"}
@@ -153,7 +156,7 @@ export default class Form extends React.Component {
           title="Confirm Details"
           onClick={() => this.props.navigation.navigate("Otp")}
         />
-      </React.Fragment>
+      </KeyboardAwareScrollView>
     );
   }
 }
@@ -161,7 +164,7 @@ export default class Form extends React.Component {
 const styles = StyleSheet.create({
   backContainer: {
     backgroundColor: "#fff",
-    marginTop: "-1rem",
+    marginTop: -16,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
@@ -170,16 +173,16 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     width: "100%",
-    height: "50vh",
+    height: 400,
     padding: 40,
   },
   label: {
     fontSize: 16,
     color: "#fff",
-    marginBottom: "5px",
+    marginBottom: 5,
   },
   input: {
-    padding: "5px",
+    padding: 5,
     borderBottomColor: "#f7f7f7",
     borderBottomWidth: 1,
     fontSize: 16,
@@ -188,35 +191,43 @@ const styles = StyleSheet.create({
   description: {
     fontSize: 12,
     color: "#fff",
-    marginBottom: "30px",
+    marginBottom: 30,
     opacity: 0.7,
   },
   btn: {
     alignSelf: "center",
-    width: "250px",
+    width: 250,
     textAlign: "center",
-    padding: "20px",
+    padding: 20,
     backgroundColor: "#3CD52E",
     borderRadius: 10,
-    marginBottom: "10px",
+    marginBottom: 10,
   },
   btnTxt: {
     fontSize: 16,
     fontWeight: "700",
     color: "#fff",
+    textAlign: "center",
   },
   tncContainer: {
     backgroundColor: "#fff",
-    padding: "20px",
+    padding: 20,
     borderRadius: 20,
+    marginTop: -20,
     width: "100%",
-    marginTop: "-3rem",
-    marginBottom: "1rem",
+    marginBottom: 16,
     shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 6,
+    },
+    shadowOpacity: 0.39,
+    shadowRadius: 8.3,
+    elevation: 13,
   },
   tncCol: {
     display: "flex",
     flexDirection: "row",
-    padding: "10px",
+    padding: 10,
   },
 });

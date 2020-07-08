@@ -15,49 +15,47 @@ import Button from "../components/Button";
 export default class OTP extends React.Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      headerTitle: (
+      headerTitle: () => (
         <Image
           resizeMode="contain"
           source={require("../assets/images/Logo.png")}
           style={{ width: 200, height: 60, marginRight: 16 }}
         />
       ),
-      headerLeft: (
+      headerLeft: () => (
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Text
             style={{
-              fontSize: 30,
+              fontSize: 40,
               fontWeight: "700",
-              paddingLeft: "15px",
+              marginLeft: 16,
               color: "#430098",
-              marginTop: "-8px",
+              marginTop: -8,
             }}
           >
             &times;
           </Text>
         </TouchableOpacity>
       ),
-      headerRight: (
+      headerRight: () => (
         <Image
           resizeMode="contain"
           source={require("../assets/images/telephone.png")}
-          style={{ width: "25px", height: "25px", marginRight: "16px" }}
+          style={{ width: 25, height: 25, marginRight: 16 }}
         />
       ),
     };
   };
 
-  createTwoButtonAlert = () =>
+  handleAlert = () =>
     Alert.alert(
       "Alert Title",
       "Done",
       [
         {
-          text: "Cancel",
-          onPress: () => console.log("Cancel Pressed"),
-          style: "cancel",
+          text: "OK",
+          onPress: () => this.props.navigation.navigate("Landing"),
         },
-        { text: "OK", onPress: () => console.log("OK Pressed") },
       ],
       { cancelable: false }
     );
@@ -77,7 +75,7 @@ export default class OTP extends React.Component {
           keyboardType="number-pad"
         />
 
-        <Button title="Verify OTP" onClick={this.createTwoButtonAlert} />
+        <Button title="Verify OTP" onClick={this.handleAlert} />
       </View>
     );
   }
@@ -85,21 +83,22 @@ export default class OTP extends React.Component {
 
 const style = StyleSheet.create({
   container: {
-    minHeight: "100vh",
+    minHeight: 900,
     backgroundColor: "#fff",
   },
   input: {
-    padding: "10px",
+    padding: 10,
     fontSize: 16,
     color: "#000",
-    width: "200px",
-    height: "60px",
+    width: 200,
+    height: 60,
     borderStyle: "solid",
-    borderWidth: 1,
+    borderWidth: 2,
     borderColor: "#F0F0F0",
     borderRadius: 10,
     justifyContent: "center",
     alignSelf: "center",
-    marginVertical: "30px",
+    marginVertical: 30,
+    textAlign: "center",
   },
 });

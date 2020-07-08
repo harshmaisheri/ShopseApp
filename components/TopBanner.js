@@ -7,7 +7,7 @@ export default function TopBanner() {
     <View style={styles.container}>
       <LinearGradient
         colors={["#430098", "#8752ba"]}
-        start={[0.1, 0.9]}
+        start={[0.9, 0.1]}
         style={styles.linearGradient}
       >
         <Image
@@ -29,20 +29,20 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     justifyContent: "center",
     borderRadius: 10,
-    width: "50px",
-    height: "50px",
+    width: 50,
+    height: 50,
   },
   icon: {
     textAlign: "center",
-    margin: "20px",
+    margin: 20,
     fontSize: 18,
     color: "#fff",
     fontWeight: "700",
   },
   linearGradient: {
     width: "100%",
-    padding: "15px",
-    height: "175px",
+    padding: 15,
+    height: 175,
     opacity: 0.95,
     justifyContent: "center",
     alignItems: "center",

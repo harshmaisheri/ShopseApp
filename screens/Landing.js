@@ -8,37 +8,38 @@ import Button from "../components/Button";
 export default class Landing extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
-      headerTitle: (
+      headerTitle: () => (
         <Image
           resizeMode="contain"
           source={require("../assets/images/Logo.png")}
           style={{ width: 200, height: 60, marginRight: 16 }}
-        ></Image>
+        />
       ),
-      headerLeft: (
+      headerLeft: () => (
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Text
             style={{
-              fontSize: 30,
+              fontSize: 40,
               fontWeight: "700",
-              paddingLeft: "15px",
+              marginLeft: 16,
               color: "#430098",
-              marginTop: "-8px",
+              marginTop: -8,
             }}
           >
             &times;
           </Text>
         </TouchableOpacity>
       ),
-      headerRight: (
+      headerRight: () => (
         <Image
           resizeMode="contain"
           source={require("../assets/images/telephone.png")}
-          style={{ width: "25px", height: "25px", marginRight: "16px" }}
-        ></Image>
+          style={{ width: 25, height: 25, marginRight: 16 }}
+        />
       ),
     };
   };
+
   render() {
     return (
       <View style={styles.container}>
@@ -82,12 +83,12 @@ export default class Landing extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#fff",
-    minHeight: "92vh",
+    minHeight: 800,
   },
   subtitle: {
     textAlign: "center",
     fontStyle: "italic",
-    padding: "20px",
+    padding: 20,
     fontSize: 16,
     opacity: 0.8,
   },
@@ -96,7 +97,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-evenly",
-    marginTop: "20px",
+    marginTop: 20,
   },
   col: {
     width: "33%",
@@ -104,12 +105,12 @@ const styles = StyleSheet.create({
   iconContainer: {
     backgroundColor: "#F3F3F3",
     borderRadius: 30,
-    width: "50px",
-    height: "50px",
+    width: 50,
+    height: 50,
     alignSelf: "center",
     justifyContent: "center",
-    padding: "10px",
-    marginBottom: "20px",
+    padding: 10,
+    marginBottom: 20,
   },
   descriptionText: {
     fontSize: 16,
